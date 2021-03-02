@@ -9,6 +9,9 @@ const Index = () => {
 
       <main>
         <h1>Custom Hooks Library</h1>
+        <ul>
+          <li>useFetch</li>
+        </ul>
       </main>
     </div>
   );
