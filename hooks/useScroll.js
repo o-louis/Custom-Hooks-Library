@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useScroll = (element) => {
+const useScroll = (ref) => {
   const [pos, setPos] = useState({x: 0, y: 0})
 
   useEffect(() => {
@@ -11,11 +11,11 @@ const useScroll = (element) => {
       })
     }
 
-    element = element?.current || window;
-    element.addEventListener('scroll', handleScroll);
+    ref = ref?.current || window;
+    ref.addEventListener('scroll', handleScroll);
 
-    return () => element.removeEventListener('scroll', handleScroll);
-  }, [element])
+    return () => ref.removeEventListener('scroll', handleScroll);
+  }, [ref])
 
   return pos;
 }
