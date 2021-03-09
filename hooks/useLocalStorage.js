@@ -1,19 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-const useLocalStorage = (key, value = undefined) => {
-  const [local, setLocal] = useState(undefined);
-
-  const setKey = useCallback((localKey) => {
-    localStorage.setItem(key, JSON.stringify(localKey));
-    setLocal(localKey);
+const useLocalStorage = (key, value) => {
+  const [local, setLocal] = useState(() => {
+    try {
+      const localKey = localStorage.getItem(key);
+      return localKey ? JSON.parse(localKey) : value;
+    } catch {
+      return value;
+    }
   });
 
   useEffect(() => {
-    let localKey = local || value || JSON.parse(localStorage.getItem(key));
-    if (localKey) {
-      setKey(localKey);
-    }
-  }, [local, setKey]);
+    local && localStorage.setItem(key, JSON.stringify(local));
+  }, [key, local]);
   return [local, setLocal];
 };
 
