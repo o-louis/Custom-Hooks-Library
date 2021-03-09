@@ -11,6 +11,9 @@ const Index = () => {
         <h1>Custom Hooks Library</h1>
         <ul>
           <li>useFetch</li>
+          <li>useScroll</li>
+          <li>useTheme</li>
+          <li>useLocalStorage</li>
         </ul>
       </main>
     </div>
