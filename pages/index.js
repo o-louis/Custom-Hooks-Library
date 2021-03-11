@@ -14,6 +14,7 @@ const Index = () => {
           <li>useScroll</li>
           <li>useTheme</li>
           <li>useLocalStorage</li>
+          <li>useKeyDown</li>
         </ul>
       </main>
     </div>
