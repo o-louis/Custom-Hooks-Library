@@ -7,21 +7,23 @@ const useFetch = (url) => {
 
   useEffect(() => {
     const fetchData = () => {
-      setLoading(true); setData([]); setError(null);
+      setLoading(true);
+      setData([]);
+      setError(null);
 
       fetch(url)
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(e => {
-        setError(e.message)
-        throw new Error(e);
-      })
-      .finally(() => setLoading(false));
-    }
+        .then((response) => response.json())
+        .then((data) => setData(data))
+        .catch((e) => {
+          setError(e.message);
+          throw new Error(e);
+        })
+        .finally(() => setLoading(false));
+    };
     fetchData();
-  }, [url])
+  }, [url]);
 
   return { data, loading, error };
-}
+};
 
-export default useFetch
+export default useFetch;
